@@ -1,5 +1,5 @@
-import { App, TFile, TFolder, parseYaml, stringifyYaml } from 'obsidian';
-import { Workout, WorkoutExercise, WorkoutSet, GymTrackerSettings } from '../types';
+import { App, TFile, TFolder, parseYaml, stringifyYaml } from "obsidian";
+import { Workout, WorkoutExercise, WorkoutSet, GymTrackerSettings } from "../types";
 
 export class WorkoutParser {
   private app: App;
@@ -26,20 +26,20 @@ export class WorkoutParser {
     }
 
     try {
-      const frontmatter = parseYaml(frontmatterMatch[1]);
+      const frontmatter = parseYaml(frontmatterMatch[1] ?? "") as Record<string, unknown>;
       const body = content.slice(frontmatterMatch[0].length);
 
       const exercises = this.parseExerciseTables(body);
 
       return {
-        date: frontmatter.date,
-        type: frontmatter.type,
-        duration: frontmatter.duration,
+        date: frontmatter.date as string,
+        type: frontmatter.type as string,
+        duration: frontmatter.duration as number | undefined,
         exercises,
-        notes: frontmatter.notes,
+        notes: frontmatter.notes as string | undefined,
       };
     } catch (e) {
-      console.error('Failed to parse workout file', e);
+      console.error("Failed to parse workout file", e);
       return null;
     }
   }
@@ -54,18 +54,19 @@ export class WorkoutParser {
    */
   private parseExerciseTables(body: string): WorkoutExercise[] {
     const exercises: WorkoutExercise[] = [];
-    
+
     // Match exercise headers and their tables
     // Supports both [[id|name]] and [[id]] and plain ### Name formats
-    const exercisePattern = /###\s+(?:\[\[([^\]|]+)(?:\|[^\]]+)?\]\]|([^\n]+))\n([\s\S]*?)(?=###|$)/g;
-    
+    const exercisePattern =
+      /###\s+(?:\[\[([^\]|]+)(?:\|[^\]]+)?\]\]|([^\n]+))\n([\s\S]*?)(?=###|$)/g;
+
     let match;
     while ((match = exercisePattern.exec(body)) !== null) {
-      const exerciseId = match[1] || this.toKebabCase(match[2].trim());
-      const tableContent = match[3];
-      
+      const exerciseId = match[1] ?? this.toKebabCase((match[2] ?? "").trim());
+      const tableContent = match[3] ?? "";
+
       const sets = this.parseSetTable(tableContent);
-      
+
       if (sets.length > 0) {
         exercises.push({
           exerciseId,
@@ -82,16 +83,16 @@ export class WorkoutParser {
    */
   private parseSetTable(tableContent: string): WorkoutSet[] {
     const sets: WorkoutSet[] = [];
-    const lines = tableContent.trim().split('\n');
-    
+    const lines = tableContent.trim().split("\n");
+
     // Find table rows (skip header and separator)
     let inTable = false;
     let headerParsed = false;
-    
+
     for (const line of lines) {
       const trimmed = line.trim();
-      
-      if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+
+      if (trimmed.startsWith("|") && trimmed.endsWith("|")) {
         if (!inTable) {
           inTable = true;
           continue; // Skip header row
@@ -100,15 +101,18 @@ export class WorkoutParser {
           headerParsed = true;
           continue; // Skip separator row (|-----|)
         }
-        
+
         // Parse data row
-        const cells = trimmed.split('|').map((c) => c.trim()).filter((c) => c);
-        
+        const cells = trimmed
+          .split("|")
+          .map((c) => c.trim())
+          .filter((c) => c);
+
         if (cells.length >= 3) {
-          const weight = parseFloat(cells[1]) || 0;
-          const reps = parseInt(cells[2]) || 0;
+          const weight = parseFloat(cells[1] ?? "0") || 0;
+          const reps = parseInt(cells[2] ?? "0") || 0;
           const rpe = cells[3] ? parseFloat(cells[3]) : undefined;
-          
+
           if (weight > 0 || reps > 0) {
             sets.push({ weight, reps, rpe });
           }
@@ -125,8 +129,8 @@ export class WorkoutParser {
   private toKebabCase(str: string): string {
     return str
       .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
   }
 
   /**
@@ -137,7 +141,7 @@ export class WorkoutParser {
       date: workout.date,
       type: workout.type,
     };
-    
+
     if (workout.duration) {
       frontmatter.duration = workout.duration;
     }
@@ -150,7 +154,7 @@ export class WorkoutParser {
     for (const exercise of workout.exercises) {
       content += `### [[${exercise.exerciseId}]]\n`;
       content += this.generateSetTable(exercise.sets);
-      content += '\n';
+      content += "\n";
     }
 
     return content;
@@ -161,13 +165,13 @@ export class WorkoutParser {
    */
   private generateSetTable(sets: WorkoutSet[]): string {
     const showRPE = this.settings.showRPE;
-    
+
     let table = showRPE
-      ? '| Set | Weight | Reps | RPE |\n|-----|--------|------|-----|\n'
-      : '| Set | Weight | Reps |\n|-----|--------|------|\n';
+      ? "| Set | Weight | Reps | RPE |\n|-----|--------|------|-----|\n"
+      : "| Set | Weight | Reps |\n|-----|--------|------|\n";
 
     sets.forEach((set, index) => {
-      const rpeCell = set.rpe !== undefined ? set.rpe.toString() : '';
+      const rpeCell = set.rpe !== undefined ? set.rpe.toString() : "";
       table += showRPE
         ? `| ${index + 1} | ${set.weight} | ${set.reps} | ${rpeCell} |\n`
         : `| ${index + 1} | ${set.weight} | ${set.reps} |\n`;
@@ -181,7 +185,7 @@ export class WorkoutParser {
    */
   async saveWorkout(workout: Workout): Promise<TFile> {
     const folderPath = this.settings.workoutsFolder;
-    
+
     // Ensure folder exists
     const folder = this.app.vault.getAbstractFileByPath(folderPath);
     if (!folder) {
@@ -190,16 +194,16 @@ export class WorkoutParser {
 
     const fileName = `${workout.date}-${workout.type}.md`;
     const filePath = `${folderPath}/${fileName}`;
-    
+
     const content = this.generateWorkoutContent(workout);
-    
+
     // Check if file already exists
     const existing = this.app.vault.getAbstractFileByPath(filePath);
     if (existing instanceof TFile) {
       await this.app.vault.modify(existing, content);
       return existing;
     }
-    
+
     return await this.app.vault.create(filePath, content);
   }
 
@@ -209,18 +213,18 @@ export class WorkoutParser {
   async loadAllWorkouts(): Promise<Workout[]> {
     const workouts: Workout[] = [];
     const folder = this.app.vault.getAbstractFileByPath(this.settings.workoutsFolder);
-    
+
     if (!(folder instanceof TFolder)) {
       return workouts;
     }
 
     for (const file of folder.children) {
-      if (file instanceof TFile && file.extension === 'md') {
+      if (file instanceof TFile && file.extension === "md") {
         // Skip exercises subfolder files
         if (file.path.startsWith(this.settings.exercisesFolder)) {
           continue;
         }
-        
+
         const workout = await this.parseWorkoutFile(file);
         if (workout) {
           workouts.push(workout);
@@ -230,7 +234,7 @@ export class WorkoutParser {
 
     // Sort by date descending
     workouts.sort((a, b) => b.date.localeCompare(a.date));
-    
+
     return workouts;
   }
 
@@ -238,10 +242,11 @@ export class WorkoutParser {
    * Get progression data for a specific exercise
    */
   async getExerciseProgression(
-    exerciseId: string
+    exerciseId: string,
   ): Promise<{ date: string; maxWeight: number; maxReps: number; totalVolume: number }[]> {
     const workouts = await this.loadAllWorkouts();
-    const progression: { date: string; maxWeight: number; maxReps: number; totalVolume: number }[] = [];
+    const progression: { date: string; maxWeight: number; maxReps: number; totalVolume: number }[] =
+      [];
 
     for (const workout of workouts) {
       const exercise = workout.exercises.find((e) => e.exerciseId === exerciseId);
@@ -249,7 +254,7 @@ export class WorkoutParser {
         const maxWeight = Math.max(...exercise.sets.map((s) => s.weight));
         const maxReps = Math.max(...exercise.sets.map((s) => s.reps));
         const totalVolume = exercise.sets.reduce((sum, s) => sum + s.weight * s.reps, 0);
-        
+
         progression.push({
           date: workout.date,
           maxWeight,
@@ -261,7 +266,7 @@ export class WorkoutParser {
 
     // Sort by date ascending for charts
     progression.sort((a, b) => a.date.localeCompare(b.date));
-    
+
     return progression;
   }
 }

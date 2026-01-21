@@ -1,16 +1,16 @@
-import { Plugin, Notice } from 'obsidian';
-import { GymTrackerSettings, DEFAULT_SETTINGS } from './types';
-import { ExerciseLibrary } from './data/exerciseLibrary';
-import { WorkoutParser } from './data/workoutParser';
-import { LogWorkoutModal } from './ui/LogWorkoutModal';
-import { AddExerciseModal } from './ui/AddExerciseModal';
-import { GymTrackerSettingsTab } from './ui/SettingsTab';
-import { SEED_EXERCISES } from './data/seedExercises';
+import { Plugin, Notice } from "obsidian";
+import { GymTrackerSettings, DEFAULT_SETTINGS } from "./types";
+import { ExerciseLibrary } from "./data/exerciseLibrary";
+import { WorkoutParser } from "./data/workoutParser";
+import { LogWorkoutModal } from "./ui/LogWorkoutModal";
+import { AddExerciseModal } from "./ui/AddExerciseModal";
+import { GymTrackerSettingsTab } from "./ui/SettingsTab";
+import { SEED_EXERCISES } from "./data/seedExercises";
 
 export default class GymTrackerPlugin extends Plugin {
-  settings: GymTrackerSettings;
-  exerciseLibrary: ExerciseLibrary;
-  workoutParser: WorkoutParser;
+  settings!: GymTrackerSettings;
+  exerciseLibrary!: ExerciseLibrary;
+  workoutParser!: WorkoutParser;
 
   async onload() {
     await this.loadSettings();
@@ -23,47 +23,37 @@ export default class GymTrackerPlugin extends Plugin {
     await this.exerciseLibrary.loadAll();
 
     // Add ribbon icons
-    this.addRibbonIcon('dumbbell', 'Log Workout', () => {
-      new LogWorkoutModal(
-        this.app,
-        this.settings,
-        this.exerciseLibrary,
-        this.workoutParser
-      ).open();
+    this.addRibbonIcon("dumbbell", "Log Workout", () => {
+      new LogWorkoutModal(this.app, this.settings, this.exerciseLibrary, this.workoutParser).open();
     });
 
     // Add commands
     this.addCommand({
-      id: 'log-workout',
-      name: 'Log Workout',
+      id: "log-workout",
+      name: "Log Workout",
       callback: () => {
         new LogWorkoutModal(
           this.app,
           this.settings,
           this.exerciseLibrary,
-          this.workoutParser
+          this.workoutParser,
         ).open();
       },
     });
 
     this.addCommand({
-      id: 'add-exercise',
-      name: 'Add Exercise to Library',
+      id: "add-exercise",
+      name: "Add Exercise to Library",
       callback: () => {
-        new AddExerciseModal(
-          this.app,
-          this.settings,
-          this.exerciseLibrary,
-          async () => {
-            await this.exerciseLibrary.loadAll();
-          }
-        ).open();
+        new AddExerciseModal(this.app, this.settings, this.exerciseLibrary, async () => {
+          await this.exerciseLibrary.loadAll();
+        }).open();
       },
     });
 
     this.addCommand({
-      id: 'seed-exercises',
-      name: 'Seed Exercise Library',
+      id: "seed-exercises",
+      name: "Seed Exercise Library",
       callback: async () => {
         await this.seedExerciseLibrary();
       },
@@ -75,7 +65,7 @@ export default class GymTrackerPlugin extends Plugin {
     // Auto-seed on first run if library is empty
     if (!this.settings.seeded && this.exerciseLibrary.getAll().length === 0) {
       // Don't auto-seed, let user do it manually from settings
-      console.log('Gym Tracker: Exercise library is empty. Use settings to seed it.');
+      console.log("Gym Tracker: Exercise library is empty. Use settings to seed it.");
     }
   }
 
@@ -92,8 +82,8 @@ export default class GymTrackerPlugin extends Plugin {
   }
 
   async seedExerciseLibrary() {
-    const notice = new Notice('Seeding exercise library...', 0);
-    
+    const notice = new Notice("Seeding exercise library...", 0);
+
     try {
       // Ensure folders exist
       const workoutsFolder = this.app.vault.getAbstractFileByPath(this.settings.workoutsFolder);
@@ -131,7 +121,7 @@ export default class GymTrackerPlugin extends Plugin {
 
       this.settings.seeded = true;
       await this.saveSettings();
-      
+
       // Reload library
       await this.exerciseLibrary.loadAll();
 
@@ -139,8 +129,8 @@ export default class GymTrackerPlugin extends Plugin {
       new Notice(`Exercise library seeded! Created: ${created}, Skipped: ${skipped}`);
     } catch (e) {
       notice.hide();
-      console.error('Failed to seed exercise library', e);
-      new Notice('Failed to seed exercise library. Check console for details.');
+      console.error("Failed to seed exercise library", e);
+      new Notice("Failed to seed exercise library. Check console for details.");
     }
   }
 }

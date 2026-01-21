@@ -6,7 +6,7 @@ export interface Exercise {
     primary: string[];
     secondary: string[];
   };
-  type: 'compound' | 'isolation';
+  type: "compound" | "isolation";
   equipment: string;
   alternatives: string[]; // IDs of alternative exercises
   description?: string;
@@ -40,51 +40,51 @@ export interface GymTrackerSettings {
   workoutsFolder: string;
   exercisesFolder: string;
   workoutTypes: string[];
-  weightUnit: 'kg' | 'lbs';
+  weightUnit: "kg" | "lbs";
   showRPE: boolean;
   seeded: boolean; // whether exercise library has been seeded
 }
 
 export const DEFAULT_SETTINGS: GymTrackerSettings = {
-  workoutsFolder: 'Workouts',
-  exercisesFolder: 'Workouts/Exercises',
-  workoutTypes: ['push', 'pull', 'legs', 'upper', 'lower', 'full-body'],
-  weightUnit: 'lbs',
+  workoutsFolder: "Workouts",
+  exercisesFolder: "Workouts/Exercises",
+  workoutTypes: ["push", "pull", "legs", "upper", "lower", "full-body"],
+  weightUnit: "lbs",
   showRPE: true,
   seeded: false,
 };
 
 // Muscle groups for categorization
 export const MUSCLE_GROUPS = [
-  'chest',
-  'back',
-  'shoulders',
-  'biceps',
-  'triceps',
-  'forearms',
-  'quads',
-  'hamstrings',
-  'glutes',
-  'calves',
-  'abs',
-  'traps',
-  'lats',
+  "chest",
+  "back",
+  "shoulders",
+  "biceps",
+  "triceps",
+  "forearms",
+  "quads",
+  "hamstrings",
+  "glutes",
+  "calves",
+  "abs",
+  "traps",
+  "lats",
 ] as const;
 
-export type MuscleGroup = typeof MUSCLE_GROUPS[number];
+export type MuscleGroup = (typeof MUSCLE_GROUPS)[number];
 
 // Equipment types
 export const EQUIPMENT_TYPES = [
-  'barbell',
-  'dumbbell',
-  'cable',
-  'machine',
-  'bodyweight',
-  'kettlebell',
-  'bands',
-  'ez-bar',
-  'smith-machine',
-  'other',
+  "barbell",
+  "dumbbell",
+  "cable",
+  "machine",
+  "bodyweight",
+  "kettlebell",
+  "bands",
+  "ez-bar",
+  "smith-machine",
+  "other",
 ] as const;
 
-export type EquipmentType = typeof EQUIPMENT_TYPES[number];
+export type EquipmentType = (typeof EQUIPMENT_TYPES)[number];

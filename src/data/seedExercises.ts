@@ -1,14 +1,14 @@
-import { Exercise } from '../types';
+import { Exercise } from "../types";
 
 export const SEED_EXERCISES: Exercise[] = [
   // ============ CHEST ============
   {
-    id: 'barbell-bench-press',
-    name: 'Barbell Bench Press',
-    muscles: { primary: ['chest'], secondary: ['triceps', 'shoulders'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['dumbbell-bench-press', 'machine-chest-press'],
+    id: "barbell-bench-press",
+    name: "Barbell Bench Press",
+    muscles: { primary: ["chest"], secondary: ["triceps", "shoulders"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["dumbbell-bench-press", "machine-chest-press"],
     description: `## How to Perform
 1. Lie flat on bench with feet firmly planted
 2. Grip bar slightly wider than shoulder width
@@ -21,12 +21,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Keep elbows at 45-75 degree angle`,
   },
   {
-    id: 'dumbbell-bench-press',
-    name: 'Dumbbell Bench Press',
-    muscles: { primary: ['chest'], secondary: ['triceps', 'shoulders'] },
-    type: 'compound',
-    equipment: 'dumbbell',
-    alternatives: ['barbell-bench-press', 'machine-chest-press'],
+    id: "dumbbell-bench-press",
+    name: "Dumbbell Bench Press",
+    muscles: { primary: ["chest"], secondary: ["triceps", "shoulders"] },
+    type: "compound",
+    equipment: "dumbbell",
+    alternatives: ["barbell-bench-press", "machine-chest-press"],
     description: `## How to Perform
 1. Sit on bench with dumbbells on thighs
 2. Kick back and position dumbbells at chest level
@@ -39,12 +39,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Good for addressing imbalances`,
   },
   {
-    id: 'incline-barbell-bench-press',
-    name: 'Incline Barbell Bench Press',
-    muscles: { primary: ['chest'], secondary: ['shoulders', 'triceps'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['incline-dumbbell-bench-press', 'incline-machine-press'],
+    id: "incline-barbell-bench-press",
+    name: "Incline Barbell Bench Press",
+    muscles: { primary: ["chest"], secondary: ["shoulders", "triceps"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["incline-dumbbell-bench-press", "machine-chest-press"],
     description: `## How to Perform
 1. Set bench to 30-45 degree incline
 2. Grip bar slightly wider than shoulder width
@@ -57,12 +57,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Keep shoulder blades retracted`,
   },
   {
-    id: 'incline-dumbbell-bench-press',
-    name: 'Incline Dumbbell Bench Press',
-    muscles: { primary: ['chest'], secondary: ['shoulders', 'triceps'] },
-    type: 'compound',
-    equipment: 'dumbbell',
-    alternatives: ['incline-barbell-bench-press'],
+    id: "incline-dumbbell-bench-press",
+    name: "Incline Dumbbell Bench Press",
+    muscles: { primary: ["chest"], secondary: ["shoulders", "triceps"] },
+    type: "compound",
+    equipment: "dumbbell",
+    alternatives: ["incline-barbell-bench-press"],
     description: `## How to Perform
 1. Set bench to 30-45 degree incline
 2. Press dumbbells up from shoulder level
@@ -73,12 +73,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Allows natural wrist rotation`,
   },
   {
-    id: 'decline-bench-press',
-    name: 'Decline Bench Press',
-    muscles: { primary: ['chest'], secondary: ['triceps'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['decline-dumbbell-press', 'dips'],
+    id: "decline-bench-press",
+    name: "Decline Bench Press",
+    muscles: { primary: ["chest"], secondary: ["triceps"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["dumbbell-bench-press", "dips"],
     description: `## How to Perform
 1. Secure legs at end of decline bench
 2. Lower bar to lower chest
@@ -89,12 +89,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Reduced shoulder strain vs flat bench`,
   },
   {
-    id: 'dumbbell-flyes',
-    name: 'Dumbbell Flyes',
-    muscles: { primary: ['chest'], secondary: [] },
-    type: 'isolation',
-    equipment: 'dumbbell',
-    alternatives: ['cable-flyes', 'pec-deck'],
+    id: "dumbbell-flyes",
+    name: "Dumbbell Flyes",
+    muscles: { primary: ["chest"], secondary: [] },
+    type: "isolation",
+    equipment: "dumbbell",
+    alternatives: ["cable-flyes", "pec-deck"],
     description: `## How to Perform
 1. Lie on flat bench with dumbbells above chest
 2. With slight bend in elbows, lower arms out to sides
@@ -106,12 +106,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Squeeze chest at top`,
   },
   {
-    id: 'cable-flyes',
-    name: 'Cable Flyes',
-    muscles: { primary: ['chest'], secondary: [] },
-    type: 'isolation',
-    equipment: 'cable',
-    alternatives: ['dumbbell-flyes', 'pec-deck'],
+    id: "cable-flyes",
+    name: "Cable Flyes",
+    muscles: { primary: ["chest"], secondary: [] },
+    type: "isolation",
+    equipment: "cable",
+    alternatives: ["dumbbell-flyes", "pec-deck"],
     description: `## How to Perform
 1. Set cables at shoulder height or higher
 2. Step forward, arms extended to sides
@@ -124,12 +124,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - High-to-low for lower chest, low-to-high for upper`,
   },
   {
-    id: 'pec-deck',
-    name: 'Pec Deck Machine',
-    muscles: { primary: ['chest'], secondary: [] },
-    type: 'isolation',
-    equipment: 'machine',
-    alternatives: ['cable-flyes', 'dumbbell-flyes'],
+    id: "pec-deck",
+    name: "Pec Deck Machine",
+    muscles: { primary: ["chest"], secondary: [] },
+    type: "isolation",
+    equipment: "machine",
+    alternatives: ["cable-flyes", "dumbbell-flyes"],
     description: `## How to Perform
 1. Adjust seat so handles are at chest level
 2. Place forearms on pads or grip handles
@@ -141,12 +141,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Focus on squeezing chest`,
   },
   {
-    id: 'machine-chest-press',
-    name: 'Machine Chest Press',
-    muscles: { primary: ['chest'], secondary: ['triceps', 'shoulders'] },
-    type: 'compound',
-    equipment: 'machine',
-    alternatives: ['barbell-bench-press', 'dumbbell-bench-press'],
+    id: "machine-chest-press",
+    name: "Machine Chest Press",
+    muscles: { primary: ["chest"], secondary: ["triceps", "shoulders"] },
+    type: "compound",
+    equipment: "machine",
+    alternatives: ["barbell-bench-press", "dumbbell-bench-press"],
     description: `## How to Perform
 1. Adjust seat so handles are at chest level
 2. Press handles forward to full extension
@@ -157,12 +157,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Safer without a spotter`,
   },
   {
-    id: 'push-ups',
-    name: 'Push-Ups',
-    muscles: { primary: ['chest'], secondary: ['triceps', 'shoulders', 'abs'] },
-    type: 'compound',
-    equipment: 'bodyweight',
-    alternatives: ['barbell-bench-press', 'dumbbell-bench-press'],
+    id: "push-ups",
+    name: "Push-Ups",
+    muscles: { primary: ["chest"], secondary: ["triceps", "shoulders", "abs"] },
+    type: "compound",
+    equipment: "bodyweight",
+    alternatives: ["barbell-bench-press", "dumbbell-bench-press"],
     description: `## How to Perform
 1. Start in plank position, hands shoulder-width apart
 2. Lower chest to ground, keeping body straight
@@ -174,12 +174,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Full range of motion`,
   },
   {
-    id: 'dips',
-    name: 'Dips',
-    muscles: { primary: ['chest', 'triceps'], secondary: ['shoulders'] },
-    type: 'compound',
-    equipment: 'bodyweight',
-    alternatives: ['decline-bench-press', 'cable-flyes'],
+    id: "dips",
+    name: "Dips",
+    muscles: { primary: ["chest", "triceps"], secondary: ["shoulders"] },
+    type: "compound",
+    equipment: "bodyweight",
+    alternatives: ["decline-bench-press", "cable-flyes"],
     description: `## How to Perform
 1. Grip parallel bars, arms straight
 2. Lean forward slightly for chest emphasis
@@ -194,12 +194,12 @@ export const SEED_EXERCISES: Exercise[] = [
 
   // ============ BACK ============
   {
-    id: 'barbell-row',
-    name: 'Barbell Row',
-    muscles: { primary: ['back', 'lats'], secondary: ['biceps', 'traps'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['dumbbell-row', 'cable-row'],
+    id: "barbell-row",
+    name: "Barbell Row",
+    muscles: { primary: ["back", "lats"], secondary: ["biceps", "traps"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["dumbbell-row", "cable-row"],
     description: `## How to Perform
 1. Hinge at hips, back flat, grip bar outside knees
 2. Pull bar to lower chest/upper abs
@@ -212,12 +212,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Control the negative`,
   },
   {
-    id: 'dumbbell-row',
-    name: 'Dumbbell Row',
-    muscles: { primary: ['back', 'lats'], secondary: ['biceps'] },
-    type: 'compound',
-    equipment: 'dumbbell',
-    alternatives: ['barbell-row', 'cable-row'],
+    id: "dumbbell-row",
+    name: "Dumbbell Row",
+    muscles: { primary: ["back", "lats"], secondary: ["biceps"] },
+    type: "compound",
+    equipment: "dumbbell",
+    alternatives: ["barbell-row", "cable-row"],
     description: `## How to Perform
 1. Place knee and hand on bench, other foot on floor
 2. Row dumbbell to hip, keeping elbow close
@@ -229,12 +229,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Full stretch at bottom`,
   },
   {
-    id: 'pull-ups',
-    name: 'Pull-Ups',
-    muscles: { primary: ['lats', 'back'], secondary: ['biceps'] },
-    type: 'compound',
-    equipment: 'bodyweight',
-    alternatives: ['lat-pulldown', 'assisted-pull-ups'],
+    id: "pull-ups",
+    name: "Pull-Ups",
+    muscles: { primary: ["lats", "back"], secondary: ["biceps"] },
+    type: "compound",
+    equipment: "bodyweight",
+    alternatives: ["lat-pulldown", "chin-ups"],
     description: `## How to Perform
 1. Grip bar with palms facing away, slightly wider than shoulders
 2. Hang with arms extended
@@ -247,12 +247,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Full dead hang at bottom`,
   },
   {
-    id: 'chin-ups',
-    name: 'Chin-Ups',
-    muscles: { primary: ['lats', 'biceps'], secondary: ['back'] },
-    type: 'compound',
-    equipment: 'bodyweight',
-    alternatives: ['pull-ups', 'lat-pulldown'],
+    id: "chin-ups",
+    name: "Chin-Ups",
+    muscles: { primary: ["lats", "biceps"], secondary: ["back"] },
+    type: "compound",
+    equipment: "bodyweight",
+    alternatives: ["pull-ups", "lat-pulldown"],
     description: `## How to Perform
 1. Grip bar with palms facing you, shoulder width
 2. Pull up until chin clears bar
@@ -263,12 +263,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Great for building pulling strength`,
   },
   {
-    id: 'lat-pulldown',
-    name: 'Lat Pulldown',
-    muscles: { primary: ['lats'], secondary: ['biceps', 'back'] },
-    type: 'compound',
-    equipment: 'cable',
-    alternatives: ['pull-ups', 'chin-ups'],
+    id: "lat-pulldown",
+    name: "Lat Pulldown",
+    muscles: { primary: ["lats"], secondary: ["biceps", "back"] },
+    type: "compound",
+    equipment: "cable",
+    alternatives: ["pull-ups", "chin-ups"],
     description: `## How to Perform
 1. Grip bar wide, sit with thighs secured
 2. Pull bar to upper chest
@@ -281,12 +281,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Feel the stretch at top`,
   },
   {
-    id: 'cable-row',
-    name: 'Seated Cable Row',
-    muscles: { primary: ['back', 'lats'], secondary: ['biceps'] },
-    type: 'compound',
-    equipment: 'cable',
-    alternatives: ['barbell-row', 'dumbbell-row'],
+    id: "cable-row",
+    name: "Seated Cable Row",
+    muscles: { primary: ["back", "lats"], secondary: ["biceps"] },
+    type: "compound",
+    equipment: "cable",
+    alternatives: ["barbell-row", "dumbbell-row"],
     description: `## How to Perform
 1. Sit with feet on platform, knees slightly bent
 2. Pull handle to lower chest
@@ -298,12 +298,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Full stretch forward, full squeeze back`,
   },
   {
-    id: 't-bar-row',
-    name: 'T-Bar Row',
-    muscles: { primary: ['back'], secondary: ['biceps', 'lats'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['barbell-row', 'dumbbell-row'],
+    id: "t-bar-row",
+    name: "T-Bar Row",
+    muscles: { primary: ["back"], secondary: ["biceps", "lats"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["barbell-row", "dumbbell-row"],
     description: `## How to Perform
 1. Straddle the bar, grip handle
 2. Pull to chest, squeezing back
@@ -314,12 +314,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Keep chest supported if using machine version`,
   },
   {
-    id: 'deadlift',
-    name: 'Conventional Deadlift',
-    muscles: { primary: ['back', 'hamstrings', 'glutes'], secondary: ['traps', 'forearms'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['romanian-deadlift', 'sumo-deadlift'],
+    id: "deadlift",
+    name: "Conventional Deadlift",
+    muscles: { primary: ["back", "hamstrings", "glutes"], secondary: ["traps", "forearms"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["romanian-deadlift", "sumo-deadlift"],
     description: `## How to Perform
 1. Stand with feet hip-width, bar over mid-foot
 2. Hinge and grip bar just outside legs
@@ -333,12 +333,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Push the floor away`,
   },
   {
-    id: 'romanian-deadlift',
-    name: 'Romanian Deadlift',
-    muscles: { primary: ['hamstrings', 'glutes'], secondary: ['back'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['deadlift', 'dumbbell-rdl'],
+    id: "romanian-deadlift",
+    name: "Romanian Deadlift",
+    muscles: { primary: ["hamstrings", "glutes"], secondary: ["back"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["deadlift", "stiff-leg-deadlift"],
     description: `## How to Perform
 1. Start standing with bar at hips
 2. Push hips back, lowering bar along legs
@@ -351,12 +351,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Don't go lower than mid-shin`,
   },
   {
-    id: 'face-pulls',
-    name: 'Face Pulls',
-    muscles: { primary: ['shoulders', 'traps'], secondary: ['back'] },
-    type: 'isolation',
-    equipment: 'cable',
-    alternatives: ['rear-delt-flyes', 'band-pull-aparts'],
+    id: "face-pulls",
+    name: "Face Pulls",
+    muscles: { primary: ["shoulders", "traps"], secondary: ["back"] },
+    type: "isolation",
+    equipment: "cable",
+    alternatives: ["rear-delt-flyes", "lateral-raises"],
     description: `## How to Perform
 1. Set cable at face height with rope attachment
 2. Pull rope to face, separating hands
@@ -369,12 +369,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Squeeze rear delts`,
   },
   {
-    id: 'rack-pulls',
-    name: 'Rack Pulls',
-    muscles: { primary: ['back', 'traps'], secondary: ['glutes', 'hamstrings'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['deadlift', 'block-pulls'],
+    id: "rack-pulls",
+    name: "Rack Pulls",
+    muscles: { primary: ["back", "traps"], secondary: ["glutes", "hamstrings"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["deadlift", "trap-bar-deadlift"],
     description: `## How to Perform
 1. Set bar in rack at knee height or just below
 2. Grip and pull to lockout
@@ -387,12 +387,12 @@ export const SEED_EXERCISES: Exercise[] = [
 
   // ============ SHOULDERS ============
   {
-    id: 'overhead-press',
-    name: 'Overhead Press',
-    muscles: { primary: ['shoulders'], secondary: ['triceps', 'traps'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['dumbbell-shoulder-press', 'machine-shoulder-press'],
+    id: "overhead-press",
+    name: "Overhead Press",
+    muscles: { primary: ["shoulders"], secondary: ["triceps", "traps"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["dumbbell-shoulder-press", "arnold-press"],
     description: `## How to Perform
 1. Grip bar at shoulder width, bar resting on front delts
 2. Brace core, press bar overhead
@@ -405,12 +405,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Full lockout overhead`,
   },
   {
-    id: 'dumbbell-shoulder-press',
-    name: 'Dumbbell Shoulder Press',
-    muscles: { primary: ['shoulders'], secondary: ['triceps'] },
-    type: 'compound',
-    equipment: 'dumbbell',
-    alternatives: ['overhead-press', 'machine-shoulder-press'],
+    id: "dumbbell-shoulder-press",
+    name: "Dumbbell Shoulder Press",
+    muscles: { primary: ["shoulders"], secondary: ["triceps"] },
+    type: "compound",
+    equipment: "dumbbell",
+    alternatives: ["overhead-press", "arnold-press"],
     description: `## How to Perform
 1. Sit or stand with dumbbells at shoulder level
 2. Press up, bringing dumbbells together at top
@@ -421,12 +421,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Good for addressing imbalances`,
   },
   {
-    id: 'arnold-press',
-    name: 'Arnold Press',
-    muscles: { primary: ['shoulders'], secondary: ['triceps'] },
-    type: 'compound',
-    equipment: 'dumbbell',
-    alternatives: ['dumbbell-shoulder-press'],
+    id: "arnold-press",
+    name: "Arnold Press",
+    muscles: { primary: ["shoulders"], secondary: ["triceps"] },
+    type: "compound",
+    equipment: "dumbbell",
+    alternatives: ["dumbbell-shoulder-press"],
     description: `## How to Perform
 1. Start with dumbbells at chest, palms facing you
 2. Press up while rotating palms to face forward
@@ -437,12 +437,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Use lighter weight than regular press`,
   },
   {
-    id: 'lateral-raises',
-    name: 'Lateral Raises',
-    muscles: { primary: ['shoulders'], secondary: [] },
-    type: 'isolation',
-    equipment: 'dumbbell',
-    alternatives: ['cable-lateral-raises', 'machine-lateral-raises'],
+    id: "lateral-raises",
+    name: "Lateral Raises",
+    muscles: { primary: ["shoulders"], secondary: [] },
+    type: "isolation",
+    equipment: "dumbbell",
+    alternatives: ["cable-lateral-raises", "front-raises"],
     description: `## How to Perform
 1. Stand with dumbbells at sides
 2. Raise arms out to sides until parallel to ground
@@ -454,12 +454,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Don't swing or use momentum`,
   },
   {
-    id: 'cable-lateral-raises',
-    name: 'Cable Lateral Raises',
-    muscles: { primary: ['shoulders'], secondary: [] },
-    type: 'isolation',
-    equipment: 'cable',
-    alternatives: ['lateral-raises'],
+    id: "cable-lateral-raises",
+    name: "Cable Lateral Raises",
+    muscles: { primary: ["shoulders"], secondary: [] },
+    type: "isolation",
+    equipment: "cable",
+    alternatives: ["lateral-raises"],
     description: `## How to Perform
 1. Set cable at lowest setting
 2. Stand sideways to machine
@@ -471,12 +471,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Can do one arm at a time for focus`,
   },
   {
-    id: 'front-raises',
-    name: 'Front Raises',
-    muscles: { primary: ['shoulders'], secondary: [] },
-    type: 'isolation',
-    equipment: 'dumbbell',
-    alternatives: ['cable-front-raises', 'plate-front-raises'],
+    id: "front-raises",
+    name: "Front Raises",
+    muscles: { primary: ["shoulders"], secondary: [] },
+    type: "isolation",
+    equipment: "dumbbell",
+    alternatives: ["lateral-raises", "cable-lateral-raises"],
     description: `## How to Perform
 1. Stand with dumbbells in front of thighs
 2. Raise one or both arms to shoulder height
@@ -488,12 +488,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Front delts often get enough work from pressing`,
   },
   {
-    id: 'rear-delt-flyes',
-    name: 'Rear Delt Flyes',
-    muscles: { primary: ['shoulders'], secondary: ['traps'] },
-    type: 'isolation',
-    equipment: 'dumbbell',
-    alternatives: ['face-pulls', 'reverse-pec-deck'],
+    id: "rear-delt-flyes",
+    name: "Rear Delt Flyes",
+    muscles: { primary: ["shoulders"], secondary: ["traps"] },
+    type: "isolation",
+    equipment: "dumbbell",
+    alternatives: ["face-pulls", "cable-flyes"],
     description: `## How to Perform
 1. Bend over with flat back, dumbbells hanging
 2. Raise arms out to sides, squeezing rear delts
@@ -505,12 +505,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Feel it in back of shoulders`,
   },
   {
-    id: 'upright-rows',
-    name: 'Upright Rows',
-    muscles: { primary: ['shoulders', 'traps'], secondary: [] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['cable-upright-rows', 'dumbbell-upright-rows'],
+    id: "upright-rows",
+    name: "Upright Rows",
+    muscles: { primary: ["shoulders", "traps"], secondary: [] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["lateral-raises", "shrugs"],
     description: `## How to Perform
 1. Grip bar with hands close together
 2. Pull bar up along body to chin level
@@ -522,12 +522,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Don't pull too high if uncomfortable`,
   },
   {
-    id: 'shrugs',
-    name: 'Barbell Shrugs',
-    muscles: { primary: ['traps'], secondary: [] },
-    type: 'isolation',
-    equipment: 'barbell',
-    alternatives: ['dumbbell-shrugs', 'machine-shrugs'],
+    id: "shrugs",
+    name: "Barbell Shrugs",
+    muscles: { primary: ["traps"], secondary: [] },
+    type: "isolation",
+    equipment: "barbell",
+    alternatives: ["upright-rows", "face-pulls"],
     description: `## How to Perform
 1. Hold bar at arms length
 2. Shrug shoulders straight up toward ears
@@ -542,12 +542,12 @@ export const SEED_EXERCISES: Exercise[] = [
 
   // ============ BICEPS ============
   {
-    id: 'barbell-curl',
-    name: 'Barbell Curl',
-    muscles: { primary: ['biceps'], secondary: ['forearms'] },
-    type: 'isolation',
-    equipment: 'barbell',
-    alternatives: ['dumbbell-curl', 'ez-bar-curl'],
+    id: "barbell-curl",
+    name: "Barbell Curl",
+    muscles: { primary: ["biceps"], secondary: ["forearms"] },
+    type: "isolation",
+    equipment: "barbell",
+    alternatives: ["dumbbell-curl", "cable-curl"],
     description: `## How to Perform
 1. Stand with bar at arms length, palms up
 2. Curl bar to shoulders, keeping elbows stationary
@@ -560,12 +560,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Full range of motion`,
   },
   {
-    id: 'dumbbell-curl',
-    name: 'Dumbbell Curl',
-    muscles: { primary: ['biceps'], secondary: ['forearms'] },
-    type: 'isolation',
-    equipment: 'dumbbell',
-    alternatives: ['barbell-curl', 'cable-curl'],
+    id: "dumbbell-curl",
+    name: "Dumbbell Curl",
+    muscles: { primary: ["biceps"], secondary: ["forearms"] },
+    type: "isolation",
+    equipment: "dumbbell",
+    alternatives: ["barbell-curl", "cable-curl"],
     description: `## How to Perform
 1. Stand or sit with dumbbells at sides
 2. Curl up, can supinate (rotate) at top
@@ -576,12 +576,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Supination increases bicep activation`,
   },
   {
-    id: 'hammer-curl',
-    name: 'Hammer Curl',
-    muscles: { primary: ['biceps', 'forearms'], secondary: [] },
-    type: 'isolation',
-    equipment: 'dumbbell',
-    alternatives: ['cross-body-hammer-curl', 'rope-hammer-curl'],
+    id: "hammer-curl",
+    name: "Hammer Curl",
+    muscles: { primary: ["biceps", "forearms"], secondary: [] },
+    type: "isolation",
+    equipment: "dumbbell",
+    alternatives: ["dumbbell-curl", "cable-curl"],
     description: `## How to Perform
 1. Hold dumbbells with neutral grip (palms facing each other)
 2. Curl up keeping neutral grip
@@ -592,12 +592,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Good for forearm development`,
   },
   {
-    id: 'preacher-curl',
-    name: 'Preacher Curl',
-    muscles: { primary: ['biceps'], secondary: [] },
-    type: 'isolation',
-    equipment: 'ez-bar',
-    alternatives: ['dumbbell-preacher-curl', 'machine-preacher-curl'],
+    id: "preacher-curl",
+    name: "Preacher Curl",
+    muscles: { primary: ["biceps"], secondary: [] },
+    type: "isolation",
+    equipment: "ez-bar",
+    alternatives: ["concentration-curl", "cable-curl"],
     description: `## How to Perform
 1. Sit at preacher bench, arms over pad
 2. Curl weight up, squeezing biceps
@@ -609,12 +609,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Don't go too heavy - vulnerable position`,
   },
   {
-    id: 'incline-dumbbell-curl',
-    name: 'Incline Dumbbell Curl',
-    muscles: { primary: ['biceps'], secondary: [] },
-    type: 'isolation',
-    equipment: 'dumbbell',
-    alternatives: ['dumbbell-curl', 'preacher-curl'],
+    id: "incline-dumbbell-curl",
+    name: "Incline Dumbbell Curl",
+    muscles: { primary: ["biceps"], secondary: [] },
+    type: "isolation",
+    equipment: "dumbbell",
+    alternatives: ["dumbbell-curl", "preacher-curl"],
     description: `## How to Perform
 1. Sit on incline bench (45-60 degrees)
 2. Let arms hang straight down
@@ -626,12 +626,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Don't swing or use momentum`,
   },
   {
-    id: 'concentration-curl',
-    name: 'Concentration Curl',
-    muscles: { primary: ['biceps'], secondary: [] },
-    type: 'isolation',
-    equipment: 'dumbbell',
-    alternatives: ['preacher-curl', 'cable-curl'],
+    id: "concentration-curl",
+    name: "Concentration Curl",
+    muscles: { primary: ["biceps"], secondary: [] },
+    type: "isolation",
+    equipment: "dumbbell",
+    alternatives: ["preacher-curl", "cable-curl"],
     description: `## How to Perform
 1. Sit, elbow braced against inner thigh
 2. Curl dumbbell to shoulder
@@ -643,12 +643,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Great for mind-muscle connection`,
   },
   {
-    id: 'cable-curl',
-    name: 'Cable Curl',
-    muscles: { primary: ['biceps'], secondary: [] },
-    type: 'isolation',
-    equipment: 'cable',
-    alternatives: ['barbell-curl', 'dumbbell-curl'],
+    id: "cable-curl",
+    name: "Cable Curl",
+    muscles: { primary: ["biceps"], secondary: [] },
+    type: "isolation",
+    equipment: "cable",
+    alternatives: ["barbell-curl", "dumbbell-curl"],
     description: `## How to Perform
 1. Set cable at lowest position
 2. Curl handle up to shoulders
@@ -661,12 +661,12 @@ export const SEED_EXERCISES: Exercise[] = [
 
   // ============ TRICEPS ============
   {
-    id: 'tricep-pushdown',
-    name: 'Tricep Pushdown',
-    muscles: { primary: ['triceps'], secondary: [] },
-    type: 'isolation',
-    equipment: 'cable',
-    alternatives: ['rope-pushdown', 'overhead-tricep-extension'],
+    id: "tricep-pushdown",
+    name: "Tricep Pushdown",
+    muscles: { primary: ["triceps"], secondary: [] },
+    type: "isolation",
+    equipment: "cable",
+    alternatives: ["rope-pushdown", "overhead-tricep-extension"],
     description: `## How to Perform
 1. Set cable high, grip bar or rope
 2. Keep elbows at sides
@@ -679,12 +679,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Can use different attachments`,
   },
   {
-    id: 'rope-pushdown',
-    name: 'Rope Pushdown',
-    muscles: { primary: ['triceps'], secondary: [] },
-    type: 'isolation',
-    equipment: 'cable',
-    alternatives: ['tricep-pushdown', 'overhead-tricep-extension'],
+    id: "rope-pushdown",
+    name: "Rope Pushdown",
+    muscles: { primary: ["triceps"], secondary: [] },
+    type: "isolation",
+    equipment: "cable",
+    alternatives: ["tricep-pushdown", "overhead-tricep-extension"],
     description: `## How to Perform
 1. Grip rope attachment at cable
 2. Push down and spread rope at bottom
@@ -696,12 +696,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Keep elbows pinned`,
   },
   {
-    id: 'skull-crushers',
-    name: 'Skull Crushers',
-    muscles: { primary: ['triceps'], secondary: [] },
-    type: 'isolation',
-    equipment: 'ez-bar',
-    alternatives: ['overhead-tricep-extension', 'tricep-pushdown'],
+    id: "skull-crushers",
+    name: "Skull Crushers",
+    muscles: { primary: ["triceps"], secondary: [] },
+    type: "isolation",
+    equipment: "ez-bar",
+    alternatives: ["overhead-tricep-extension", "tricep-pushdown"],
     description: `## How to Perform
 1. Lie on bench, hold bar above chest
 2. Lower bar to forehead by bending elbows
@@ -713,12 +713,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Use EZ bar for wrist comfort`,
   },
   {
-    id: 'overhead-tricep-extension',
-    name: 'Overhead Tricep Extension',
-    muscles: { primary: ['triceps'], secondary: [] },
-    type: 'isolation',
-    equipment: 'dumbbell',
-    alternatives: ['skull-crushers', 'tricep-pushdown'],
+    id: "overhead-tricep-extension",
+    name: "Overhead Tricep Extension",
+    muscles: { primary: ["triceps"], secondary: [] },
+    type: "isolation",
+    equipment: "dumbbell",
+    alternatives: ["skull-crushers", "tricep-pushdown"],
     description: `## How to Perform
 1. Hold dumbbell overhead with both hands
 2. Lower behind head by bending elbows
@@ -730,12 +730,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Can do with cable or EZ bar`,
   },
   {
-    id: 'close-grip-bench-press',
-    name: 'Close Grip Bench Press',
-    muscles: { primary: ['triceps'], secondary: ['chest', 'shoulders'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['dips', 'skull-crushers'],
+    id: "close-grip-bench-press",
+    name: "Close Grip Bench Press",
+    muscles: { primary: ["triceps"], secondary: ["chest", "shoulders"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["dips", "skull-crushers"],
     description: `## How to Perform
 1. Grip bar at shoulder width or narrower
 2. Lower to lower chest
@@ -746,12 +746,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Keep elbows closer to body than regular bench`,
   },
   {
-    id: 'tricep-kickbacks',
-    name: 'Tricep Kickbacks',
-    muscles: { primary: ['triceps'], secondary: [] },
-    type: 'isolation',
-    equipment: 'dumbbell',
-    alternatives: ['tricep-pushdown', 'rope-pushdown'],
+    id: "tricep-kickbacks",
+    name: "Tricep Kickbacks",
+    muscles: { primary: ["triceps"], secondary: [] },
+    type: "isolation",
+    equipment: "dumbbell",
+    alternatives: ["tricep-pushdown", "rope-pushdown"],
     description: `## How to Perform
 1. Bend over, upper arm parallel to ground
 2. Extend forearm back until arm is straight
@@ -766,12 +766,12 @@ export const SEED_EXERCISES: Exercise[] = [
 
   // ============ LEGS - QUADS ============
   {
-    id: 'barbell-squat',
-    name: 'Barbell Back Squat',
-    muscles: { primary: ['quads', 'glutes'], secondary: ['hamstrings', 'abs'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['front-squat', 'leg-press', 'goblet-squat'],
+    id: "barbell-squat",
+    name: "Barbell Back Squat",
+    muscles: { primary: ["quads", "glutes"], secondary: ["hamstrings", "abs"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["front-squat", "leg-press", "goblet-squat"],
     description: `## How to Perform
 1. Bar on upper back, feet shoulder width or wider
 2. Brace core, push hips back
@@ -784,12 +784,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Don't let knees cave in`,
   },
   {
-    id: 'front-squat',
-    name: 'Front Squat',
-    muscles: { primary: ['quads'], secondary: ['glutes', 'abs'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['barbell-squat', 'leg-press'],
+    id: "front-squat",
+    name: "Front Squat",
+    muscles: { primary: ["quads"], secondary: ["glutes", "abs"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["barbell-squat", "leg-press"],
     description: `## How to Perform
 1. Bar on front delts, elbows high
 2. Squat down keeping torso upright
@@ -801,12 +801,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Keep elbows up throughout`,
   },
   {
-    id: 'leg-press',
-    name: 'Leg Press',
-    muscles: { primary: ['quads', 'glutes'], secondary: ['hamstrings'] },
-    type: 'compound',
-    equipment: 'machine',
-    alternatives: ['barbell-squat', 'hack-squat'],
+    id: "leg-press",
+    name: "Leg Press",
+    muscles: { primary: ["quads", "glutes"], secondary: ["hamstrings"] },
+    type: "compound",
+    equipment: "machine",
+    alternatives: ["barbell-squat", "hack-squat"],
     description: `## How to Perform
 1. Sit in machine, feet shoulder width on platform
 2. Lower weight by bending knees
@@ -818,12 +818,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Low and narrow = more quads`,
   },
   {
-    id: 'hack-squat',
-    name: 'Hack Squat',
-    muscles: { primary: ['quads'], secondary: ['glutes'] },
-    type: 'compound',
-    equipment: 'machine',
-    alternatives: ['leg-press', 'barbell-squat'],
+    id: "hack-squat",
+    name: "Hack Squat",
+    muscles: { primary: ["quads"], secondary: ["glutes"] },
+    type: "compound",
+    equipment: "machine",
+    alternatives: ["leg-press", "barbell-squat"],
     description: `## How to Perform
 1. Position shoulders under pads, feet on platform
 2. Lower by bending knees
@@ -835,12 +835,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Good for high volume`,
   },
   {
-    id: 'leg-extension',
-    name: 'Leg Extension',
-    muscles: { primary: ['quads'], secondary: [] },
-    type: 'isolation',
-    equipment: 'machine',
-    alternatives: ['sissy-squat'],
+    id: "leg-extension",
+    name: "Leg Extension",
+    muscles: { primary: ["quads"], secondary: [] },
+    type: "isolation",
+    equipment: "machine",
+    alternatives: ["lunges"],
     description: `## How to Perform
 1. Sit in machine, ankles behind pad
 2. Extend legs until straight
@@ -853,12 +853,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Good for pre-exhaust or burnout`,
   },
   {
-    id: 'lunges',
-    name: 'Lunges',
-    muscles: { primary: ['quads', 'glutes'], secondary: ['hamstrings'] },
-    type: 'compound',
-    equipment: 'dumbbell',
-    alternatives: ['walking-lunges', 'split-squat', 'bulgarian-split-squat'],
+    id: "lunges",
+    name: "Lunges",
+    muscles: { primary: ["quads", "glutes"], secondary: ["hamstrings"] },
+    type: "compound",
+    equipment: "dumbbell",
+    alternatives: ["bulgarian-split-squat", "leg-press"],
     description: `## How to Perform
 1. Stand with dumbbells at sides
 2. Step forward, lowering back knee toward ground
@@ -871,12 +871,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Drive through front heel`,
   },
   {
-    id: 'bulgarian-split-squat',
-    name: 'Bulgarian Split Squat',
-    muscles: { primary: ['quads', 'glutes'], secondary: ['hamstrings'] },
-    type: 'compound',
-    equipment: 'dumbbell',
-    alternatives: ['lunges', 'split-squat'],
+    id: "bulgarian-split-squat",
+    name: "Bulgarian Split Squat",
+    muscles: { primary: ["quads", "glutes"], secondary: ["hamstrings"] },
+    type: "compound",
+    equipment: "dumbbell",
+    alternatives: ["lunges", "leg-press"],
     description: `## How to Perform
 1. Rear foot elevated on bench
 2. Lower until front thigh is parallel
@@ -888,12 +888,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Start with bodyweight`,
   },
   {
-    id: 'goblet-squat',
-    name: 'Goblet Squat',
-    muscles: { primary: ['quads', 'glutes'], secondary: ['abs'] },
-    type: 'compound',
-    equipment: 'dumbbell',
-    alternatives: ['barbell-squat', 'leg-press'],
+    id: "goblet-squat",
+    name: "Goblet Squat",
+    muscles: { primary: ["quads", "glutes"], secondary: ["abs"] },
+    type: "compound",
+    equipment: "dumbbell",
+    alternatives: ["barbell-squat", "leg-press"],
     description: `## How to Perform
 1. Hold dumbbell at chest level
 2. Squat down between knees
@@ -907,12 +907,12 @@ export const SEED_EXERCISES: Exercise[] = [
 
   // ============ LEGS - HAMSTRINGS ============
   {
-    id: 'leg-curl',
-    name: 'Lying Leg Curl',
-    muscles: { primary: ['hamstrings'], secondary: [] },
-    type: 'isolation',
-    equipment: 'machine',
-    alternatives: ['seated-leg-curl', 'nordic-curl'],
+    id: "leg-curl",
+    name: "Lying Leg Curl",
+    muscles: { primary: ["hamstrings"], secondary: [] },
+    type: "isolation",
+    equipment: "machine",
+    alternatives: ["seated-leg-curl", "romanian-deadlift"],
     description: `## How to Perform
 1. Lie face down, ankles under pad
 2. Curl heels toward glutes
@@ -924,12 +924,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Control the negative`,
   },
   {
-    id: 'seated-leg-curl',
-    name: 'Seated Leg Curl',
-    muscles: { primary: ['hamstrings'], secondary: [] },
-    type: 'isolation',
-    equipment: 'machine',
-    alternatives: ['leg-curl', 'nordic-curl'],
+    id: "seated-leg-curl",
+    name: "Seated Leg Curl",
+    muscles: { primary: ["hamstrings"], secondary: [] },
+    type: "isolation",
+    equipment: "machine",
+    alternatives: ["leg-curl", "romanian-deadlift"],
     description: `## How to Perform
 1. Sit in machine, legs extended
 2. Curl heels under seat
@@ -941,12 +941,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Some prefer this to lying version`,
   },
   {
-    id: 'stiff-leg-deadlift',
-    name: 'Stiff Leg Deadlift',
-    muscles: { primary: ['hamstrings'], secondary: ['glutes', 'back'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['romanian-deadlift', 'good-mornings'],
+    id: "stiff-leg-deadlift",
+    name: "Stiff Leg Deadlift",
+    muscles: { primary: ["hamstrings"], secondary: ["glutes", "back"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["romanian-deadlift", "good-mornings"],
     description: `## How to Perform
 1. Stand with bar at thighs, legs nearly straight
 2. Lower bar by hinging at hips
@@ -959,12 +959,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Don't round lower back`,
   },
   {
-    id: 'good-mornings',
-    name: 'Good Mornings',
-    muscles: { primary: ['hamstrings', 'back'], secondary: ['glutes'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['romanian-deadlift', 'stiff-leg-deadlift'],
+    id: "good-mornings",
+    name: "Good Mornings",
+    muscles: { primary: ["hamstrings", "back"], secondary: ["glutes"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["romanian-deadlift", "stiff-leg-deadlift"],
     description: `## How to Perform
 1. Bar on upper back like squat
 2. Push hips back, bending forward
@@ -979,12 +979,12 @@ export const SEED_EXERCISES: Exercise[] = [
 
   // ============ LEGS - GLUTES ============
   {
-    id: 'hip-thrust',
-    name: 'Hip Thrust',
-    muscles: { primary: ['glutes'], secondary: ['hamstrings'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['glute-bridge', 'cable-pull-through'],
+    id: "hip-thrust",
+    name: "Hip Thrust",
+    muscles: { primary: ["glutes"], secondary: ["hamstrings"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["glute-bridge", "cable-pull-through"],
     description: `## How to Perform
 1. Upper back on bench, bar over hips
 2. Drive hips up, squeezing glutes
@@ -997,12 +997,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Great glute builder`,
   },
   {
-    id: 'glute-bridge',
-    name: 'Glute Bridge',
-    muscles: { primary: ['glutes'], secondary: ['hamstrings'] },
-    type: 'isolation',
-    equipment: 'bodyweight',
-    alternatives: ['hip-thrust'],
+    id: "glute-bridge",
+    name: "Glute Bridge",
+    muscles: { primary: ["glutes"], secondary: ["hamstrings"] },
+    type: "isolation",
+    equipment: "bodyweight",
+    alternatives: ["hip-thrust"],
     description: `## How to Perform
 1. Lie on back, knees bent, feet flat
 2. Drive hips up, squeezing glutes
@@ -1014,12 +1014,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Good for activation or high reps`,
   },
   {
-    id: 'cable-pull-through',
-    name: 'Cable Pull Through',
-    muscles: { primary: ['glutes'], secondary: ['hamstrings'] },
-    type: 'compound',
-    equipment: 'cable',
-    alternatives: ['hip-thrust', 'romanian-deadlift'],
+    id: "cable-pull-through",
+    name: "Cable Pull Through",
+    muscles: { primary: ["glutes"], secondary: ["hamstrings"] },
+    type: "compound",
+    equipment: "cable",
+    alternatives: ["hip-thrust", "romanian-deadlift"],
     description: `## How to Perform
 1. Face away from low cable, rope between legs
 2. Hinge forward, feeling stretch in hamstrings
@@ -1032,12 +1032,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Great for learning hip hinge`,
   },
   {
-    id: 'sumo-deadlift',
-    name: 'Sumo Deadlift',
-    muscles: { primary: ['glutes', 'quads'], secondary: ['hamstrings', 'back'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['deadlift', 'trap-bar-deadlift'],
+    id: "sumo-deadlift",
+    name: "Sumo Deadlift",
+    muscles: { primary: ["glutes", "quads"], secondary: ["hamstrings", "back"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["deadlift", "trap-bar-deadlift"],
     description: `## How to Perform
 1. Wide stance, toes pointed out
 2. Grip bar between legs
@@ -1052,12 +1052,12 @@ export const SEED_EXERCISES: Exercise[] = [
 
   // ============ LEGS - CALVES ============
   {
-    id: 'standing-calf-raise',
-    name: 'Standing Calf Raise',
-    muscles: { primary: ['calves'], secondary: [] },
-    type: 'isolation',
-    equipment: 'machine',
-    alternatives: ['seated-calf-raise', 'donkey-calf-raise'],
+    id: "standing-calf-raise",
+    name: "Standing Calf Raise",
+    muscles: { primary: ["calves"], secondary: [] },
+    type: "isolation",
+    equipment: "machine",
+    alternatives: ["seated-calf-raise"],
     description: `## How to Perform
 1. Shoulders under pads, balls of feet on platform
 2. Lower heels for full stretch
@@ -1070,12 +1070,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Don't bounce`,
   },
   {
-    id: 'seated-calf-raise',
-    name: 'Seated Calf Raise',
-    muscles: { primary: ['calves'], secondary: [] },
-    type: 'isolation',
-    equipment: 'machine',
-    alternatives: ['standing-calf-raise'],
+    id: "seated-calf-raise",
+    name: "Seated Calf Raise",
+    muscles: { primary: ["calves"], secondary: [] },
+    type: "isolation",
+    equipment: "machine",
+    alternatives: ["standing-calf-raise"],
     description: `## How to Perform
 1. Sit with pad on lower thighs
 2. Lower heels for stretch
@@ -1089,12 +1089,12 @@ export const SEED_EXERCISES: Exercise[] = [
 
   // ============ ABS ============
   {
-    id: 'cable-crunch',
-    name: 'Cable Crunch',
-    muscles: { primary: ['abs'], secondary: [] },
-    type: 'isolation',
-    equipment: 'cable',
-    alternatives: ['hanging-leg-raise', 'decline-crunch'],
+    id: "cable-crunch",
+    name: "Cable Crunch",
+    muscles: { primary: ["abs"], secondary: [] },
+    type: "isolation",
+    equipment: "cable",
+    alternatives: ["hanging-leg-raise", "plank"],
     description: `## How to Perform
 1. Kneel facing cable, rope behind head
 2. Crunch down, bringing elbows to knees
@@ -1107,12 +1107,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Can add progressive overload`,
   },
   {
-    id: 'hanging-leg-raise',
-    name: 'Hanging Leg Raise',
-    muscles: { primary: ['abs'], secondary: [] },
-    type: 'isolation',
-    equipment: 'bodyweight',
-    alternatives: ['cable-crunch', 'lying-leg-raise'],
+    id: "hanging-leg-raise",
+    name: "Hanging Leg Raise",
+    muscles: { primary: ["abs"], secondary: [] },
+    type: "isolation",
+    equipment: "bodyweight",
+    alternatives: ["cable-crunch", "plank"],
     description: `## How to Perform
 1. Hang from bar with arms straight
 2. Raise legs until parallel or higher
@@ -1124,12 +1124,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Can bend knees if straight is too hard`,
   },
   {
-    id: 'plank',
-    name: 'Plank',
-    muscles: { primary: ['abs'], secondary: ['shoulders'] },
-    type: 'isolation',
-    equipment: 'bodyweight',
-    alternatives: ['dead-bug', 'ab-wheel'],
+    id: "plank",
+    name: "Plank",
+    muscles: { primary: ["abs"], secondary: ["shoulders"] },
+    type: "isolation",
+    equipment: "bodyweight",
+    alternatives: ["cable-crunch", "ab-wheel"],
     description: `## How to Perform
 1. Forearms and toes on ground
 2. Keep body in straight line
@@ -1141,12 +1141,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Breathe normally`,
   },
   {
-    id: 'ab-wheel',
-    name: 'Ab Wheel Rollout',
-    muscles: { primary: ['abs'], secondary: ['shoulders', 'lats'] },
-    type: 'compound',
-    equipment: 'other',
-    alternatives: ['plank', 'cable-crunch'],
+    id: "ab-wheel",
+    name: "Ab Wheel Rollout",
+    muscles: { primary: ["abs"], secondary: ["shoulders", "lats"] },
+    type: "compound",
+    equipment: "other",
+    alternatives: ["plank", "cable-crunch"],
     description: `## How to Perform
 1. Kneel holding ab wheel
 2. Roll forward, extending body
@@ -1160,12 +1160,12 @@ export const SEED_EXERCISES: Exercise[] = [
 
   // ============ ADDITIONAL COMPOUNDS ============
   {
-    id: 'trap-bar-deadlift',
-    name: 'Trap Bar Deadlift',
-    muscles: { primary: ['quads', 'glutes', 'back'], secondary: ['hamstrings', 'traps'] },
-    type: 'compound',
-    equipment: 'other',
-    alternatives: ['deadlift', 'sumo-deadlift'],
+    id: "trap-bar-deadlift",
+    name: "Trap Bar Deadlift",
+    muscles: { primary: ["quads", "glutes", "back"], secondary: ["hamstrings", "traps"] },
+    type: "compound",
+    equipment: "other",
+    alternatives: ["deadlift", "sumo-deadlift"],
     description: `## How to Perform
 1. Stand inside trap bar, feet hip width
 2. Grip handles, brace core
@@ -1178,12 +1178,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Great for beginners`,
   },
   {
-    id: 'farmers-walk',
+    id: "farmers-walk",
     name: "Farmer's Walk",
-    muscles: { primary: ['traps', 'forearms'], secondary: ['abs', 'glutes'] },
-    type: 'compound',
-    equipment: 'dumbbell',
-    alternatives: ['suitcase-carry'],
+    muscles: { primary: ["traps", "forearms"], secondary: ["abs", "glutes"] },
+    type: "compound",
+    equipment: "dumbbell",
+    alternatives: ["shrugs"],
     description: `## How to Perform
 1. Pick up heavy dumbbells/implements
 2. Walk with tall posture
@@ -1195,12 +1195,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Don't let weights swing`,
   },
   {
-    id: 'landmine-press',
-    name: 'Landmine Press',
-    muscles: { primary: ['shoulders', 'chest'], secondary: ['triceps'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['overhead-press', 'dumbbell-shoulder-press'],
+    id: "landmine-press",
+    name: "Landmine Press",
+    muscles: { primary: ["shoulders", "chest"], secondary: ["triceps"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["overhead-press", "dumbbell-shoulder-press"],
     description: `## How to Perform
 1. Stand at end of barbell in landmine
 2. Press up and forward at angle
@@ -1211,12 +1211,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Can do single arm or both`,
   },
   {
-    id: 'pendlay-row',
-    name: 'Pendlay Row',
-    muscles: { primary: ['back', 'lats'], secondary: ['biceps'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['barbell-row', 'dumbbell-row'],
+    id: "pendlay-row",
+    name: "Pendlay Row",
+    muscles: { primary: ["back", "lats"], secondary: ["biceps"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["barbell-row", "dumbbell-row"],
     description: `## How to Perform
 1. Bar on floor, bend over parallel to ground
 2. Explosively row to chest
@@ -1228,12 +1228,12 @@ export const SEED_EXERCISES: Exercise[] = [
 - Great for power`,
   },
   {
-    id: 'meadows-row',
-    name: 'Meadows Row',
-    muscles: { primary: ['lats'], secondary: ['biceps', 'back'] },
-    type: 'compound',
-    equipment: 'barbell',
-    alternatives: ['dumbbell-row', 't-bar-row'],
+    id: "meadows-row",
+    name: "Meadows Row",
+    muscles: { primary: ["lats"], secondary: ["biceps", "back"] },
+    type: "compound",
+    equipment: "barbell",
+    alternatives: ["dumbbell-row", "t-bar-row"],
     description: `## How to Perform
 1. Barbell in landmine, stand perpendicular
 2. Staggered stance, grip end of bar
