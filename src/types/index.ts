@@ -88,3 +88,45 @@ export const EQUIPMENT_TYPES = [
 ] as const;
 
 export type EquipmentType = (typeof EQUIPMENT_TYPES)[number];
+
+// Program exercise definition (from program table)
+export interface ProgramExercise {
+  exerciseId: string;
+  sets: number;
+  reps: string; // e.g., "6-8", "10-12", "AMRAP"
+  progression?: string; // e.g., "+5lbs at 4×8"
+}
+
+// A workout template within a program
+export interface ProgramWorkout {
+  type: string; // push, pull, legs, etc.
+  exercises: ProgramExercise[];
+}
+
+// A training program
+export interface Program {
+  name: string;
+  split: string[]; // rotation order, e.g., ["push", "pull", "legs"]
+  started?: string; // YYYY-MM-DD
+  workouts: ProgramWorkout[];
+}
+
+// Generated workout suggestion with history context
+export interface WorkoutSuggestion {
+  date: string;
+  type: string;
+  programName: string;
+  exercises: ExerciseSuggestion[];
+}
+
+export interface ExerciseSuggestion {
+  exerciseId: string;
+  targetSets: number;
+  targetReps: string;
+  suggestedWeight: number;
+  lastPerformance?: {
+    date: string;
+    sets: WorkoutSet[];
+  };
+  progression?: string;
+}
