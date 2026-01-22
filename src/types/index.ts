@@ -39,6 +39,7 @@ export interface Workout {
 export interface GymTrackerSettings {
   workoutsFolder: string;
   exercisesFolder: string;
+  templatesFolder: string;
   workoutTypes: string[];
   weightUnit: "kg" | "lbs";
   showRPE: boolean;
@@ -48,6 +49,7 @@ export interface GymTrackerSettings {
 export const DEFAULT_SETTINGS: GymTrackerSettings = {
   workoutsFolder: "Workouts",
   exercisesFolder: "Workouts/Exercises",
+  templatesFolder: "Workouts/Templates",
   workoutTypes: ["push", "pull", "legs", "upper", "lower", "full-body"],
   weightUnit: "lbs",
   showRPE: true,
@@ -129,4 +131,19 @@ export interface ExerciseSuggestion {
     sets: WorkoutSet[];
   };
   progression?: string;
+}
+
+// Workout template exercise definition
+export interface TemplateExercise {
+  exerciseId: string;
+  sets: number;
+  reps: string; // e.g., "6-8", "10-12", "AMRAP"
+}
+
+// A workout template (e.g., Pull-A, Push-B, Legs)
+export interface WorkoutTemplate {
+  id: string; // kebab-case filename
+  name: string; // display name
+  type: string; // workout type (push, pull, legs, etc.)
+  exercises: TemplateExercise[];
 }

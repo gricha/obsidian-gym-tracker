@@ -1,7 +1,9 @@
 import { App, Modal, Setting, Notice, FuzzySuggestModal } from "obsidian";
-import { Exercise, Workout, WorkoutSet, GymTrackerSettings } from "../types";
+import { Exercise, Workout, WorkoutSet, WorkoutTemplate, GymTrackerSettings } from "../types";
 import { ExerciseLibrary } from "../data/exerciseLibrary";
 import { WorkoutParser } from "../data/workoutParser";
+import { TemplateLibrary } from "../data/templateLibrary";
+import { TemplatePickerModal } from "./TemplatePickerModal";
 
 interface WorkoutExerciseEntry {
   exercise: Exercise;
@@ -12,6 +14,7 @@ export class LogWorkoutModal extends Modal {
   private settings: GymTrackerSettings;
   private exerciseLibrary: ExerciseLibrary;
   private workoutParser: WorkoutParser;
+  private templateLibrary: TemplateLibrary | null;
 
   private date: string;
   private workoutType: string;
@@ -24,11 +27,13 @@ export class LogWorkoutModal extends Modal {
     settings: GymTrackerSettings,
     exerciseLibrary: ExerciseLibrary,
     workoutParser: WorkoutParser,
+    templateLibrary?: TemplateLibrary,
   ) {
     super(app);
     this.settings = settings;
     this.exerciseLibrary = exerciseLibrary;
     this.workoutParser = workoutParser;
+    this.templateLibrary = templateLibrary ?? null;
 
     // Default to today and first workout type
     this.date = new Date().toISOString().split("T")[0] ?? "";
@@ -66,8 +71,20 @@ export class LogWorkoutModal extends Modal {
     contentEl.createEl("h3", { text: "Exercises" });
     this.exerciseListEl = contentEl.createDiv({ cls: "gym-tracker-exercise-list" });
 
+    // Template and exercise buttons
+    const buttonsSetting = new Setting(contentEl);
+
+    // Use Template button (only if templateLibrary is available)
+    if (this.templateLibrary) {
+      buttonsSetting.addButton((btn) => {
+        btn.setButtonText("Use Template").onClick(() => {
+          this.openTemplatePicker();
+        });
+      });
+    }
+
     // Add exercise button
-    new Setting(contentEl).addButton((btn) => {
+    buttonsSetting.addButton((btn) => {
       btn
         .setButtonText("+ Add Exercise")
         .setCta()
@@ -222,6 +239,57 @@ export class LogWorkoutModal extends Modal {
       this.renderExerciseList();
     });
     picker.open();
+  }
+
+  private openTemplatePicker() {
+    if (!this.templateLibrary) return;
+
+    const templates = this.templateLibrary.getAll();
+
+    if (templates.length === 0) {
+      new Notice("No templates available. Create a template first.");
+      return;
+    }
+
+    const picker = new TemplatePickerModal(this.app, templates, (template) => {
+      this.applyTemplate(template);
+    });
+    picker.open();
+  }
+
+  private applyTemplate(template: WorkoutTemplate) {
+    // Set the workout type from template
+    this.workoutType = template.type;
+
+    // Clear existing exercises and populate from template
+    this.exercises = [];
+
+    for (const templateExercise of template.exercises) {
+      const exercise = this.exerciseLibrary.getById(templateExercise.exerciseId);
+      if (!exercise) {
+        new Notice(`Exercise not found: ${templateExercise.exerciseId}`);
+        continue;
+      }
+
+      // Create empty sets based on template set count
+      const sets: WorkoutSet[] = [];
+      for (let i = 0; i < templateExercise.sets; i++) {
+        sets.push({ weight: 0, reps: 0 });
+      }
+
+      this.exercises.push({ exercise, sets });
+    }
+
+    // Re-render the exercise list
+    this.renderExerciseList();
+
+    // Update the workout type dropdown if it exists
+    const dropdown = this.contentEl.querySelector("select");
+    if (dropdown) {
+      (dropdown as HTMLSelectElement).value = template.type;
+    }
+
+    new Notice(`Applied template: ${template.name}`);
   }
 
   private async saveWorkout() {

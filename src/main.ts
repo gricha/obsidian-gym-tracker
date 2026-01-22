@@ -3,8 +3,10 @@ import { GymTrackerSettings, DEFAULT_SETTINGS } from "./types";
 import { ExerciseLibrary } from "./data/exerciseLibrary";
 import { WorkoutParser } from "./data/workoutParser";
 import { ProgramParser } from "./data/programParser";
+import { TemplateLibrary } from "./data/templateLibrary";
 import { LogWorkoutModal } from "./ui/LogWorkoutModal";
 import { AddExerciseModal } from "./ui/AddExerciseModal";
+import { CreateTemplateModal } from "./ui/CreateTemplateModal";
 import { GymTrackerSettingsTab } from "./ui/SettingsTab";
 import { SEED_EXERCISES } from "./data/seedExercises";
 
@@ -13,6 +15,7 @@ export default class GymTrackerPlugin extends Plugin {
   exerciseLibrary!: ExerciseLibrary;
   workoutParser!: WorkoutParser;
   programParser!: ProgramParser;
+  templateLibrary!: TemplateLibrary;
 
   async onload() {
     await this.loadSettings();
@@ -21,13 +24,21 @@ export default class GymTrackerPlugin extends Plugin {
     this.exerciseLibrary = new ExerciseLibrary(this.app, this.settings);
     this.workoutParser = new WorkoutParser(this.app, this.settings);
     this.programParser = new ProgramParser(this.app, this.settings);
+    this.templateLibrary = new TemplateLibrary(this.app, this.settings);
 
-    // Load exercise library
+    // Load exercise library and templates
     await this.exerciseLibrary.loadAll();
+    await this.templateLibrary.loadAll();
 
     // Add ribbon icons
     this.addRibbonIcon("dumbbell", "Log Workout", () => {
-      new LogWorkoutModal(this.app, this.settings, this.exerciseLibrary, this.workoutParser).open();
+      new LogWorkoutModal(
+        this.app,
+        this.settings,
+        this.exerciseLibrary,
+        this.workoutParser,
+        this.templateLibrary,
+      ).open();
     });
 
     // Add commands
@@ -40,6 +51,23 @@ export default class GymTrackerPlugin extends Plugin {
           this.settings,
           this.exerciseLibrary,
           this.workoutParser,
+          this.templateLibrary,
+        ).open();
+      },
+    });
+
+    this.addCommand({
+      id: "create-template",
+      name: "Create Workout Template",
+      callback: () => {
+        new CreateTemplateModal(
+          this.app,
+          this.settings,
+          this.exerciseLibrary,
+          this.templateLibrary,
+          async () => {
+            await this.templateLibrary.loadAll();
+          },
         ).open();
       },
     });

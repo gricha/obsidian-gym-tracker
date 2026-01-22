@@ -41,6 +41,19 @@ export class GymTrackerSettingsTab extends PluginSettingTab {
         });
       });
 
+    // Templates folder
+    new Setting(containerEl)
+      .setName("Templates Folder")
+      .setDesc("Folder where workout templates are stored")
+      .addText((text) => {
+        text.setValue(this.plugin.settings.templatesFolder);
+        text.setPlaceholder("Workouts/Templates");
+        text.onChange(async (value) => {
+          this.plugin.settings.templatesFolder = value || "Workouts/Templates";
+          await this.plugin.saveSettings();
+        });
+      });
+
     // Weight unit
     new Setting(containerEl)
       .setName("Weight Unit")
