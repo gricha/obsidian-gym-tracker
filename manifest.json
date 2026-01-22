@@ -1,7 +1,7 @@
 {
   "id": "obsidian-gym-tracker",
   "name": "Gym Tracker",
-  "version": "0.1.0",
+  "version": "0.2.3",
   "minAppVersion": "1.0.0",
   "description": "Track gym workouts with progressive overload focus. Log exercises, view progression charts, and maintain an exercise library.",
   "author": "gricha",
