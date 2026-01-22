@@ -5,9 +5,15 @@ import { WorkoutParser } from "../data/workoutParser";
 import { TemplateLibrary } from "../data/templateLibrary";
 import { TemplatePickerModal } from "./TemplatePickerModal";
 
+interface LastSessionData {
+  date: string;
+  sets: WorkoutSet[];
+}
+
 interface WorkoutExerciseEntry {
   exercise: Exercise;
   sets: WorkoutSet[];
+  lastSession?: LastSessionData | null; // null = no history, undefined = not yet loaded
 }
 
 export class LogWorkoutModal extends Modal {
@@ -139,6 +145,9 @@ export class LogWorkoutModal extends Modal {
         this.renderExerciseList();
       };
 
+      // Last session info
+      this.renderLastSession(exerciseContainer, entry);
+
       // Sets table
       const table = exerciseContainer.createEl("table", { cls: "gym-tracker-sets-table" });
       const thead = table.createEl("thead");
@@ -223,6 +232,52 @@ export class LogWorkoutModal extends Modal {
     });
   }
 
+  private renderLastSession(container: HTMLElement, entry: WorkoutExerciseEntry) {
+    const lastSessionEl = container.createDiv({ cls: "gym-tracker-last-session" });
+
+    if (entry.lastSession === undefined) {
+      // Still loading
+      lastSessionEl.createEl("span", {
+        text: "Loading history...",
+        cls: "gym-tracker-last-session-loading",
+      });
+      return;
+    }
+
+    if (entry.lastSession === null) {
+      lastSessionEl.createEl("span", {
+        text: "First time logging this exercise",
+        cls: "gym-tracker-last-session-first",
+      });
+      return;
+    }
+
+    // Show last session data (up to 3 sets)
+    const { date, sets } = entry.lastSession;
+    const displaySets = sets.slice(0, 3);
+
+    lastSessionEl.createEl("span", {
+      text: `Last: ${date}`,
+      cls: "gym-tracker-last-session-date",
+    });
+
+    const setsContainer = lastSessionEl.createEl("span", { cls: "gym-tracker-last-session-sets" });
+    displaySets.forEach((set, i) => {
+      const rirText = set.rir !== undefined ? ` RIR${set.rir}` : "";
+      const separator = i < displaySets.length - 1 ? " | " : "";
+      setsContainer.createEl("span", {
+        text: `${set.weight}×${set.reps}${rirText}${separator}`,
+      });
+    });
+
+    if (sets.length > 3) {
+      setsContainer.createEl("span", {
+        text: ` (+${sets.length - 3} more)`,
+        cls: "gym-tracker-last-session-more",
+      });
+    }
+  }
+
   private openExercisePicker() {
     const exercises = this.exerciseLibrary.getAll();
 
@@ -231,12 +286,21 @@ export class LogWorkoutModal extends Modal {
       return;
     }
 
-    const picker = new ExercisePickerModal(this.app, exercises, (exercise) => {
+    const picker = new ExercisePickerModal(this.app, exercises, async (exercise) => {
+      const entryIndex = this.exercises.length;
       this.exercises.push({
         exercise,
         sets: [{ weight: 0, reps: 0 }], // Start with one empty set
+        lastSession: undefined, // Will be loaded async
       });
       this.renderExerciseList();
+
+      // Fetch last session data
+      const lastSession = await this.workoutParser.getLastSession(exercise.id);
+      if (this.exercises[entryIndex]) {
+        this.exercises[entryIndex].lastSession = lastSession;
+        this.renderExerciseList();
+      }
     });
     picker.open();
   }
@@ -257,12 +321,14 @@ export class LogWorkoutModal extends Modal {
     picker.open();
   }
 
-  private applyTemplate(template: WorkoutTemplate) {
+  private async applyTemplate(template: WorkoutTemplate) {
     // Set the workout type from template
     this.workoutType = template.type;
 
     // Clear existing exercises and populate from template
     this.exercises = [];
+
+    const exerciseEntries: { exercise: Exercise; sets: WorkoutSet[] }[] = [];
 
     for (const templateExercise of template.exercises) {
       const exercise = this.exerciseLibrary.getById(templateExercise.exerciseId);
@@ -277,10 +343,30 @@ export class LogWorkoutModal extends Modal {
         sets.push({ weight: 0, reps: 0 });
       }
 
-      this.exercises.push({ exercise, sets });
+      exerciseEntries.push({ exercise, sets });
     }
 
+    // Add exercises with undefined lastSession (loading state)
+    this.exercises = exerciseEntries.map((entry) => ({
+      ...entry,
+      lastSession: undefined,
+    }));
+
     // Re-render the exercise list
+    this.renderExerciseList();
+
+    // Fetch last session data for all exercises in parallel
+    const lastSessions = await Promise.all(
+      exerciseEntries.map((entry) => this.workoutParser.getLastSession(entry.exercise.id)),
+    );
+
+    // Update exercises with fetched data
+    lastSessions.forEach((lastSession, index) => {
+      if (this.exercises[index]) {
+        this.exercises[index].lastSession = lastSession;
+      }
+    });
+
     this.renderExerciseList();
 
     // Update the workout type dropdown if it exists

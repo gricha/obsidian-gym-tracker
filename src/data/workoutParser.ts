@@ -239,6 +239,27 @@ export class WorkoutParser {
   }
 
   /**
+   * Get the last session data for a specific exercise
+   * Returns the most recent workout containing this exercise with its sets
+   */
+  async getLastSession(exerciseId: string): Promise<{ date: string; sets: WorkoutSet[] } | null> {
+    const workouts = await this.loadAllWorkouts();
+
+    // workouts are already sorted by date descending
+    for (const workout of workouts) {
+      const exercise = workout.exercises.find((e) => e.exerciseId === exerciseId);
+      if (exercise && exercise.sets.length > 0) {
+        return {
+          date: workout.date,
+          sets: exercise.sets,
+        };
+      }
+    }
+
+    return null;
+  }
+
+  /**
    * Get progression data for a specific exercise
    */
   async getExerciseProgression(
