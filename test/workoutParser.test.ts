@@ -6,7 +6,7 @@ import { describe, it, expect } from "vitest";
 interface WorkoutSet {
   weight: number;
   reps: number;
-  rpe?: number;
+  rir?: number;
 }
 
 interface WorkoutExercise {
@@ -84,10 +84,10 @@ function parseSetTable(tableContent: string): WorkoutSet[] {
       if (cells.length >= 3) {
         const weight = parseFloat(cells[1] ?? "0") || 0;
         const reps = parseInt(cells[2] ?? "0") || 0;
-        const rpe = cells[3] ? parseFloat(cells[3]) : undefined;
+        const rir = cells[3] ? parseFloat(cells[3]) : undefined;
 
         if (weight > 0 || reps > 0) {
-          sets.push({ weight, reps, rpe: isNaN(rpe as number) ? undefined : rpe });
+          sets.push({ weight, reps, rir: isNaN(rir as number) ? undefined : rir });
         }
       }
     } else if (inTable) {
@@ -143,15 +143,15 @@ function parseWorkoutContent(content: string): Workout | null {
   };
 }
 
-function generateSetTable(sets: WorkoutSet[], showRPE: boolean = true): string {
-  let table = showRPE
-    ? "| Set | Weight | Reps | RPE |\n|-----|--------|------|-----|\n"
+function generateSetTable(sets: WorkoutSet[], showRIR: boolean = true): string {
+  let table = showRIR
+    ? "| Set | Weight | Reps | RIR |\n|-----|--------|------|-----|\n"
     : "| Set | Weight | Reps |\n|-----|--------|------|\n";
 
   sets.forEach((set, index) => {
-    const rpeCell = set.rpe !== undefined ? set.rpe.toString() : "";
-    table += showRPE
-      ? `| ${index + 1} | ${set.weight} | ${set.reps} | ${rpeCell} |\n`
+    const rirCell = set.rir !== undefined ? set.rir.toString() : "";
+    table += showRIR
+      ? `| ${index + 1} | ${set.weight} | ${set.reps} | ${rirCell} |\n`
       : `| ${index + 1} | ${set.weight} | ${set.reps} |\n`;
   });
 
@@ -195,7 +195,7 @@ duration: 65
 
   describe("parseSetTable", () => {
     it("parses a standard set table", () => {
-      const table = `| Set | Weight | Reps | RPE |
+      const table = `| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 185    | 8    |     |
 | 2   | 185    | 8    |     |
@@ -203,13 +203,13 @@ duration: 65
 
       const sets = parseSetTable(table);
       expect(sets).toEqual([
-        { weight: 185, reps: 8, rpe: undefined },
-        { weight: 185, reps: 8, rpe: undefined },
-        { weight: 185, reps: 7, rpe: 9 },
+        { weight: 185, reps: 8, rir: undefined },
+        { weight: 185, reps: 8, rir: undefined },
+        { weight: 185, reps: 7, rir: 9 },
       ]);
     });
 
-    it("parses table without RPE column", () => {
+    it("parses table without RIR column", () => {
       const table = `| Set | Weight | Reps |
 |-----|--------|------|
 | 1   | 100    | 10   |
@@ -217,29 +217,29 @@ duration: 65
 
       const sets = parseSetTable(table);
       expect(sets).toEqual([
-        { weight: 100, reps: 10, rpe: undefined },
-        { weight: 100, reps: 9, rpe: undefined },
+        { weight: 100, reps: 10, rir: undefined },
+        { weight: 100, reps: 9, rir: undefined },
       ]);
     });
 
-    it("handles decimal weights and RPE", () => {
-      const table = `| Set | Weight | Reps | RPE |
+    it("handles decimal weights and RIR", () => {
+      const table = `| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 102.5  | 5    | 8.5 |`;
 
       const sets = parseSetTable(table);
-      expect(sets).toEqual([{ weight: 102.5, reps: 5, rpe: 8.5 }]);
+      expect(sets).toEqual([{ weight: 102.5, reps: 5, rir: 8.5 }]);
     });
 
     it("skips rows with zero weight and reps", () => {
-      const table = `| Set | Weight | Reps | RPE |
+      const table = `| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 0      | 0    |     |
 | 2   | 185    | 8    |     |`;
 
       const sets = parseSetTable(table);
       expect(sets).toHaveLength(1);
-      expect(sets[0]).toEqual({ weight: 185, reps: 8, rpe: undefined });
+      expect(sets[0]).toEqual({ weight: 185, reps: 8, rir: undefined });
     });
   });
 
@@ -249,12 +249,12 @@ duration: 65
 ## Exercises
 
 ### [[barbell-bench-press]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 185    | 8    |     |
 
 ### [[overhead-press]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 95     | 10   |     |
 `;
@@ -268,7 +268,7 @@ duration: 65
     it("parses exercises with display names in wiki links", () => {
       const body = `
 ### [[barbell-bench-press|Bench Press]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 185    | 8    |     |
 `;
@@ -280,7 +280,7 @@ duration: 65
     it("parses plain text exercise names", () => {
       const body = `
 ### Bench Press
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 185    | 8    |     |
 `;
@@ -301,14 +301,14 @@ duration: 65
 ## Exercises
 
 ### [[barbell-bench-press]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 185    | 8    |     |
 | 2   | 185    | 8    |     |
 | 3   | 185    | 7    | 9   |
 
 ### [[overhead-press]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 95     | 10   |     |
 | 2   | 95     | 9    |     |
@@ -337,26 +337,26 @@ duration: 65
   });
 
   describe("generateSetTable", () => {
-    it("generates table with RPE", () => {
+    it("generates table with RIR", () => {
       const sets: WorkoutSet[] = [
         { weight: 185, reps: 8 },
-        { weight: 185, reps: 7, rpe: 9 },
+        { weight: 185, reps: 7, rir: 9 },
       ];
 
       const table = generateSetTable(sets, true);
 
-      expect(table).toContain("| Set | Weight | Reps | RPE |");
+      expect(table).toContain("| Set | Weight | Reps | RIR |");
       expect(table).toContain("| 1 | 185 | 8 |  |");
       expect(table).toContain("| 2 | 185 | 7 | 9 |");
     });
 
-    it("generates table without RPE", () => {
+    it("generates table without RIR", () => {
       const sets: WorkoutSet[] = [{ weight: 100, reps: 10 }];
 
       const table = generateSetTable(sets, false);
 
       expect(table).toContain("| Set | Weight | Reps |");
-      expect(table).not.toContain("RPE");
+      expect(table).not.toContain("RIR");
       expect(table).toContain("| 1 | 100 | 10 |");
     });
   });
@@ -389,7 +389,7 @@ describe("Roundtrip: parse -> generate -> parse", () => {
           sets: [
             { weight: 185, reps: 8 },
             { weight: 185, reps: 8 },
-            { weight: 185, reps: 7, rpe: 9 },
+            { weight: 185, reps: 7, rir: 9 },
           ],
         },
       ],
@@ -419,6 +419,6 @@ type: ${original.type}
     expect(parsed!.exercises).toHaveLength(1);
     expect(parsed!.exercises[0]?.exerciseId).toBe("barbell-bench-press");
     expect(parsed!.exercises[0]?.sets).toHaveLength(3);
-    expect(parsed!.exercises[0]?.sets[2]?.rpe).toBe(9);
+    expect(parsed!.exercises[0]?.sets[2]?.rir).toBe(9);
   });
 });

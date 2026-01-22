@@ -68,14 +68,14 @@ export class GymTrackerSettingsTab extends PluginSettingTab {
         });
       });
 
-    // Show RPE
+    // Show RIR
     new Setting(containerEl)
-      .setName("Track RPE")
-      .setDesc("Include RPE (Rate of Perceived Exertion) column in workouts")
+      .setName("Track RIR")
+      .setDesc("Include RIR (Reps in Reserve) column in workouts")
       .addToggle((toggle) => {
-        toggle.setValue(this.plugin.settings.showRPE);
+        toggle.setValue(this.plugin.settings.showRIR);
         toggle.onChange(async (value) => {
-          this.plugin.settings.showRPE = value;
+          this.plugin.settings.showRIR = value;
           await this.plugin.saveSettings();
         });
       });

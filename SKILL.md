@@ -75,18 +75,18 @@ duration: 65
 ## Exercises
 
 ### [[barbell-bench-press]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 185    | 8    |     |
 | 2   | 185    | 8    |     |
-| 3   | 185    | 7    | 9   |
+| 3   | 185    | 7    | 1   |
 
 ### [[overhead-press]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 95     | 10   |     |
 | 2   | 95     | 9    |     |
-| 3   | 95     | 8    | 8.5 |
+| 3   | 95     | 8    | 1.5 |
 ```
 
 ### Workout Frontmatter Fields
@@ -104,15 +104,15 @@ Each exercise section starts with `### [[exercise-id]]` followed by a markdown t
 
 ```markdown
 ### [[exercise-id]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
-| 1   | {weight} | {reps} | {rpe?} |
+| 1   | {weight} | {reps} | {rir?} |
 ```
 
 - **Set**: Sequential number starting at 1
 - **Weight**: Weight used (in user's preferred unit, typically lbs)
 - **Reps**: Number of repetitions completed
-- **RPE**: Rate of Perceived Exertion (1-10 scale, optional)
+- **RIR**: Reps in Reserve (0-10 scale, optional)
 
 ## Common Agent Tasks
 
@@ -134,11 +134,11 @@ type: push
 ## Exercises
 
 ### [[barbell-bench-press]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 185    | 8    |     |
 | 2   | 185    | 8    |     |
-| 3   | 185    | 7    | 9   |
+| 3   | 185    | 7    | 1   |
 ```
 
 ### Add a New Exercise
@@ -189,6 +189,6 @@ Default types (configurable by user):
 1. **Always use exercise IDs** in workout files, not display names
 2. **Verify exercise exists** in library before adding to workout
 3. **Use consistent date format** (YYYY-MM-DD)
-4. **RPE is optional** - only include if user provides it
+4. **RIR is optional** - only include if user provides it
 5. **Weight unit** depends on user preference (check settings or ask)
 6. **Progressive overload** - when suggesting workouts, reference recent history to suggest appropriate weights

@@ -4,7 +4,7 @@ import { describe, it, expect } from "vitest";
 interface WorkoutSet {
   weight: number;
   reps: number;
-  rpe?: number;
+  rir?: number;
 }
 
 interface WorkoutExercise {

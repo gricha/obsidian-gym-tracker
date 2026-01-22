@@ -54,7 +54,7 @@ type: push
 ## Exercises
 
 ### [[barbell-bench-press]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 185    | 8    |     |
 ```

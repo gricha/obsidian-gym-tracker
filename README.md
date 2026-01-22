@@ -70,11 +70,11 @@ type: push
 ## Exercises
 
 ### [[barbell-bench-press]]
-| Set | Weight | Reps | RPE |
+| Set | Weight | Reps | RIR |
 |-----|--------|------|-----|
 | 1   | 185    | 8    |     |
 | 2   | 185    | 8    |     |
-| 3   | 185    | 7    | 9   |
+| 3   | 185    | 7    | 1   |
 ```
 
 ### Exercise Files
@@ -113,7 +113,7 @@ The plugin is designed to work with AI assistants. See [SKILL.md](./SKILL.md) fo
 | Workouts Folder | `Workouts` | Where workout logs are stored |
 | Exercises Folder | `Workouts/Exercises` | Where exercise library lives |
 | Weight Unit | `lbs` | Display unit for weights |
-| Track RPE | `true` | Include RPE column in workouts |
+| Track RIR | `true` | Include RIR column in workouts |
 | Workout Types | push, pull, legs, upper, lower, full-body | Available workout types |
 
 ## Development

@@ -146,8 +146,8 @@ export class LogWorkoutModal extends Modal {
       headerRow.createEl("th", { text: "Set" });
       headerRow.createEl("th", { text: `Weight (${this.settings.weightUnit})` });
       headerRow.createEl("th", { text: "Reps" });
-      if (this.settings.showRPE) {
-        headerRow.createEl("th", { text: "RPE" });
+      if (this.settings.showRIR) {
+        headerRow.createEl("th", { text: "RIR" });
       }
       headerRow.createEl("th", { text: "" }); // Actions
 
@@ -179,18 +179,18 @@ export class LogWorkoutModal extends Modal {
           set.reps = parseInt(repsInput.value) || 0;
         };
 
-        // RPE input (optional)
-        if (this.settings.showRPE) {
-          const rpeCell = row.createEl("td");
-          const rpeInput = rpeCell.createEl("input", {
+        // RIR input (optional)
+        if (this.settings.showRIR) {
+          const rirCell = row.createEl("td");
+          const rirInput = rirCell.createEl("input", {
             type: "number",
             cls: "gym-tracker-input",
-            attr: { step: "0.5", min: "1", max: "10" },
+            attr: { step: "0.5", min: "0", max: "10" },
           });
-          rpeInput.value = set.rpe?.toString() || "";
-          rpeInput.onchange = () => {
-            const val = parseFloat(rpeInput.value);
-            set.rpe = isNaN(val) ? undefined : val;
+          rirInput.value = set.rir?.toString() || "";
+          rirInput.onchange = () => {
+            const val = parseFloat(rirInput.value);
+            set.rir = isNaN(val) ? undefined : val;
           };
         }
 

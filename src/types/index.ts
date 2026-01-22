@@ -17,7 +17,7 @@ export interface Exercise {
 export interface WorkoutSet {
   weight: number;
   reps: number;
-  rpe?: number;
+  rir?: number;
 }
 
 // An exercise entry within a workout
@@ -42,7 +42,7 @@ export interface GymTrackerSettings {
   templatesFolder: string;
   workoutTypes: string[];
   weightUnit: "kg" | "lbs";
-  showRPE: boolean;
+  showRIR: boolean;
   seeded: boolean; // whether exercise library has been seeded
 }
 
@@ -52,7 +52,7 @@ export const DEFAULT_SETTINGS: GymTrackerSettings = {
   templatesFolder: "Workouts/Templates",
   workoutTypes: ["push", "pull", "legs", "upper", "lower", "full-body"],
   weightUnit: "lbs",
-  showRPE: true,
+  showRIR: true,
   seeded: false,
 };
 

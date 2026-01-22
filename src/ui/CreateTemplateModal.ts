@@ -1,10 +1,5 @@
 import { App, Modal, Setting, Notice, FuzzySuggestModal } from "obsidian";
-import {
-  Exercise,
-  WorkoutTemplate,
-  TemplateExercise,
-  GymTrackerSettings,
-} from "../types";
+import { Exercise, WorkoutTemplate, TemplateExercise, GymTrackerSettings } from "../types";
 import { ExerciseLibrary } from "../data/exerciseLibrary";
 import { TemplateLibrary } from "../data/templateLibrary";
 

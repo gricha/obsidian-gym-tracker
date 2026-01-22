@@ -479,10 +479,10 @@ export class ProgramParser {
    * Generate a pre-filled set table based on exercise suggestion
    */
   private generateSuggestedSetTable(exercise: ExerciseSuggestion): string {
-    const showRPE = this.settings.showRPE;
+    const showRIR = this.settings.showRIR;
 
-    let table = showRPE
-      ? "| Set | Weight | Reps | RPE |\n|-----|--------|------|-----|\n"
+    let table = showRIR
+      ? "| Set | Weight | Reps | RIR |\n|-----|--------|------|-----|\n"
       : "| Set | Weight | Reps |\n|-----|--------|------|\n";
 
     // Add progression hint as comment if applicable
@@ -497,7 +497,7 @@ export class ProgramParser {
     const targetRepsDisplay = this.parseMaxReps(exercise.targetReps) || "";
 
     for (let i = 1; i <= exercise.targetSets; i++) {
-      table += showRPE
+      table += showRIR
         ? `| ${i} | ${weightStr} | ${targetRepsDisplay} |  |\n`
         : `| ${i} | ${weightStr} | ${targetRepsDisplay} |\n`;
     }

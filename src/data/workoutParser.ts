@@ -48,7 +48,7 @@ export class WorkoutParser {
    * Parse exercise tables from the workout body
    * Format expected:
    * ### [[exercise-id|Exercise Name]]
-   * | Set | Weight | Reps | RPE |
+   * | Set | Weight | Reps | RIR |
    * |-----|--------|------|-----|
    * | 1   | 185    | 8    |     |
    */
@@ -111,10 +111,10 @@ export class WorkoutParser {
         if (cells.length >= 3) {
           const weight = parseFloat(cells[1] ?? "0") || 0;
           const reps = parseInt(cells[2] ?? "0") || 0;
-          const rpe = cells[3] ? parseFloat(cells[3]) : undefined;
+          const rir = cells[3] ? parseFloat(cells[3]) : undefined;
 
           if (weight > 0 || reps > 0) {
-            sets.push({ weight, reps, rpe });
+            sets.push({ weight, reps, rir });
           }
         }
       } else if (inTable) {
@@ -164,16 +164,16 @@ export class WorkoutParser {
    * Generate a markdown table for sets
    */
   private generateSetTable(sets: WorkoutSet[]): string {
-    const showRPE = this.settings.showRPE;
+    const showRIR = this.settings.showRIR;
 
-    let table = showRPE
-      ? "| Set | Weight | Reps | RPE |\n|-----|--------|------|-----|\n"
+    let table = showRIR
+      ? "| Set | Weight | Reps | RIR |\n|-----|--------|------|-----|\n"
       : "| Set | Weight | Reps |\n|-----|--------|------|\n";
 
     sets.forEach((set, index) => {
-      const rpeCell = set.rpe !== undefined ? set.rpe.toString() : "";
-      table += showRPE
-        ? `| ${index + 1} | ${set.weight} | ${set.reps} | ${rpeCell} |\n`
+      const rirCell = set.rir !== undefined ? set.rir.toString() : "";
+      table += showRIR
+        ? `| ${index + 1} | ${set.weight} | ${set.reps} | ${rirCell} |\n`
         : `| ${index + 1} | ${set.weight} | ${set.reps} |\n`;
     });
 
